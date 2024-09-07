@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Estudos para Concursos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS -->
+    <style>
+        /* Estiliza o corpo da página */
+        body {
+            font-family: "Chakra Petch", sans-serif;
+            background: url('https://image.freepik.com/fotos-gratis/reserve-na-biblioteca-com-livro-aberto_1150-5923.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #222831;
+        }
+
+        /* Estiliza os títulos h1 */
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            letter-spacing: 0.4rem;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com opacidade */
+            padding: 1rem;
+            border-radius: 0.6rem;
+        }
+
+        /* Estiliza as seções da página */
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com opacidade */
+            padding: 1rem;
+            border-radius: 0.6rem;
+        }
+
+        /* Estiliza os inputs dentro das seções */
+        section input {
+            width: 30rem;
+            border: none;
+            padding: 1rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1rem;
+            color: #45474B;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Estiliza os botões dentro das seções */
+        section button {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 1.5rem;
+            background-color: #30475E;
+            color: #F5F7F8;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Adiciona efeito hover ao botão de pesquisa */
+        section button:hover {
+            background-color: #30475E;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estiliza a caixa de resultados da pesquisa */
+        .resultados-pesquisa {
+            width: 60rem;
+            height: 46vh;
+            overflow-y: auto;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.6rem;
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com opacidade */
+        }
+
+        /* Estiliza cada item de resultado */
+        .item-resultado {
+            background: #FFFFFF;
+            border-radius: 0.6rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estiliza os títulos dentro dos itens de resultado */
+        .item-resultado h2 {
+            font-size: 1.5rem;
+        }
+
+        /* Estiliza os links dentro dos itens de resultado */
+        .item-resultado a {
+            text-decoration: none;
+            color: #30475E;
+        }
+
+        /* Estiliza os links quando são passados o mouse sobre */
+        .item-resultado a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estiliza a descrição meta dentro dos itens de resultado */
+        .descricao-meta {
+            color: #45474B;
+            margin: 0.5rem 0;
+        }
+
+        /* Estiliza o rodapé da página */
+        footer {
+            background-color: #F5F7F8;
+            color: #45474B;
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+            position: relative;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        /* Estiliza o texto de copyright no rodapé */
+        footer .copyright {
+            font-size: 0.9rem;
+        }
+
+        /* Estiliza o link de contato no rodapé */
+        footer a {
+            color: #30475E;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 0.2rem;
+            }
+
+            section input {
+                width: 25rem;
+                padding: 0.8rem;
+            }
+
+            .resultados-pesquisa {
+                width: 40rem;
+                height: 40vh;
+            }
+
+            .item-resultado h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+                letter-spacing: 0.1rem;
+            }
+
+            section input {
+                width: 17rem;
+            }
+
+            section button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .resultados-pesquisa {
+                width: 90%;
+                height: 50vh;
+            }
+
+            .item-resultado h2 {
+                font-size: 1.1rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portal de Estudos para Concursos</h1>
+    </header>
+    
+    <section>
+        <input type="text" placeholder="Pesquise por materiais...">
+        <button onclick="realizarPesquisa()">Pesquisar</button>
+    </section>
+
+    <section class="resultados-pesquisa">
+        <div class="item-resultado">
+            <h2>Matemática - Concursos 2024</h2>
+            <p class="descricao-meta">Este material cobre tópicos de matemática frequentemente cobrados em concursos de 2024.</p>
+            <a href="https://www.estudegratis.com.br/questoes-de-concurso/materia/matematica" target="_blank">Acesse o material</a>
+        </div>
+
+        <div class="item-resultado">
+            <h2>Português - Provas Anteriores</h2>
+            <p class="descricao-meta">Coleção de provas anteriores focadas em questões de português.</p>
+            <a href="https://www.estudegratis.com.br/questoes-de-concurso/materia/portugues" target="_blank">Acesse o material</a>
+        </div>
+
+        <div class="item-resultado">
+            <h2>História - Ensino Médio</h2>
+            <p class="descricao-meta">Material completo de história para estudo e revisão.</p>
+            <a href="https://www.estudegratis.com.br/questoes-de-concurso/materia/historia" target="_blank">Acesse o material</a>
+        </div>
+
+        <div class="item-resultado">
+            <h2>Geografia - Questões Resolvidas</h2>
+            <p class="descricao-meta">Questões resolvidas de geografia para prática.</p>
+            <a href="https://www.estudegratis.com.br/questoes-de-concurso/materia/geografia" target="_blank">Acesse o material</a>
+        </div>
+        
+        <div class="item-resultado">
+            <h2>Literatura - Textos Clássicos</h2>
+            <p class="descricao-meta">Leitura e análise de textos clássicos de literatura.</p>
+            <a href="https://www.estudegratis.com.br/questoes-de-concurso/materia/literatura" target="_blank">Acesse o material</a>
+        </div>
+
+        <div class="item-resultado">
+            <h2>Redação - Modelos e Dicas</h2>
+            <p class="descricao-meta">Modelos e dicas para melhorar suas redações.</p>
+            <a href="https://www.estudegratis.com.br/questoes-de-concurso/materia/redacao" target="_blank">Acesse o material</a>
+        </div>
+
+        <div class="item-resultado">
+            <h2>Informática - Técnicas e Tutoriais</h2>
+            <p class="descricao-meta">Tutoriais e técnicas para suporte em informática.</p>
+            <a href="https://www.estudegratis.com.br/questoes-de-concurso/materia/informatica" target="_blank">Acesse o material</a>
+        </div>
+
+        <div class="item-resultado">
+            <h2>Provas Anteriores - Geral</h2>
+            <p class="descricao-meta">Diversas provas anteriores para estudo e revisão.</p>
+            <a href="https://www.pciconcursos.com.br/provas/" target="_blank">Acesse o site</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="copyright">© 2024 Portal de Estudos para Concursos. Todos os direitos reservados.</div>
+        <div>Contato: <a href="mailto:contato@portalestudos.com.br">contato@portalestudos.com.br</a></div>
+    </footer>
+</body>
+</html>
